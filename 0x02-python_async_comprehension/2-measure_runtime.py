@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 This module defines an asynchronous coroutine `measure_runtime` that
-measures the execution time of running `async_comprehension` four times in parallel.
+measures the execution time of running `async_comprehension`
+four times in parallel.
 
 It imports `async_comprehension` from the previous task.
 """
