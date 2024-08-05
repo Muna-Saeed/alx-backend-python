@@ -17,7 +17,7 @@ decorators to mock external calls and validate functionality.
 
 import unittest
 from unittest.mock import patch, PropertyMock, MagicMock
-from parameterized import parameterized
+from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
 import requests
 from fixtures import org_payload, repos_payload, expected_repos, apache2_repos
