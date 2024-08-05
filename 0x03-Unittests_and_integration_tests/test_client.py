@@ -8,7 +8,7 @@ GithubOrgClient class from the client module.
 It includes tests for:
 - The `org` property to ensure it returns the correct organization data.
 - The `_public_repos_url` property to ensure it returns the correct URL.
-- The `public_repos` method to ensure it 
+- The `public_repos` method to ensure it
   returns the correct list of repositories.
 
 The tests use the unittest framework along with patching and parameterized
@@ -75,7 +75,7 @@ class TestGithubOrgClient(unittest.TestCase):
         returns the expected list of repos
 
         Args:
-            mock_public_repos_url (MagicMock): 
+            mock_public_repos_url (MagicMock):
             Mocked _public_repos_url property.
             mock_get_json (MagicMock): Mocked get_json method.
         """
