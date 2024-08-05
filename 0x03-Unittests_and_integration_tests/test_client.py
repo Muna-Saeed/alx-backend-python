@@ -16,9 +16,12 @@ decorators to mock external calls and validate functionality.
 """
 
 import unittest
-from unittest.mock import patch, PropertyMock
+from unittest.mock import patch, PropertyMock, MagicMock
 from parameterized import parameterized
 from client import GithubOrgClient
+import requests
+from fixtures import org_payload, repos_payload, expected_repos, apache2_repos
+
 
 
 class TestGithubOrgClient(unittest.TestCase):
@@ -114,6 +117,43 @@ class TestGithubOrgClient(unittest.TestCase):
             result = client.has_license(license_key)
 
         self.assertEqual(result, expected)
+
+@parameterized_class([
+    {'org_payload': org_payload, 'repos_payload': repos_payload, 'expected_repos': expected_repos, 'apache2_repos': apache2_repos},
+])
+class TestIntegrationGithubOrgClient(unittest.TestCase):
+    """Integration tests for GithubOrgClient class."""
+
+    @classmethod
+    def setUpClass(cls):
+        """Set up class for integration tests."""
+        cls.get_patcher = patch('requests.get')
+        cls.mock_get = cls.get_patcher.start()
+        
+        # Define the side_effect for different URLs
+        def mock_requests_get(url, *args, **kwargs):
+            if url.endswith('/orgs/google'):
+                return MagicMock(json=lambda: cls.org_payload)
+            if url.endswith('/orgs/google/repos'):
+                return MagicMock(json=lambda: cls.repos_payload)
+            if url.endswith('/repos/google/repo1'):
+                return MagicMock(json=lambda: cls.expected_repos)
+            if url.endswith('/repos/google/repo2'):
+                return MagicMock(json=lambda: cls.apache2_repos)
+            raise ValueError(f"Unhandled URL: {url}")
+
+        cls.mock_get.side_effect = mock_requests_get
+
+    @classmethod
+    def tearDownClass(cls):
+        """Tear down class after tests."""
+        cls.get_patcher.stop()
+
+    def test_public_repos(self):
+        """Test the public_repos method with the given fixtures."""
+        client = GithubOrgClient("google")
+        repos = client.public_repos()
+        self.assertEqual(repos, self.expected_repos)
 
 
 if __name__ == "__main__":
