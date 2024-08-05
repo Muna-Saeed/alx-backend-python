@@ -13,6 +13,7 @@ It includes tests for:
 
 The tests use the unittest framework along with patching and parameterized
 decorators to mock external calls and validate functionality.
+from fixtures import org_payload, repos_payload, expected_repos, apache2_repos
 """
 
 import unittest
@@ -20,7 +21,7 @@ from unittest.mock import patch, PropertyMock, MagicMock
 from parameterized import parameterized, parameterized_class
 from client import GithubOrgClient
 import requests
-from fixtures import org_payload, repos_payload, expected_repos, apache2_repos
+import fixtures
 
 
 class TestGithubOrgClient(unittest.TestCase):
