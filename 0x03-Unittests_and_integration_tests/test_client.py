@@ -23,7 +23,6 @@ import requests
 from fixtures import org_payload, repos_payload, expected_repos, apache2_repos
 
 
-
 class TestGithubOrgClient(unittest.TestCase):
     """Tests the GithubOrgClient class"""
 
@@ -118,8 +117,10 @@ class TestGithubOrgClient(unittest.TestCase):
 
         self.assertEqual(result, expected)
 
+
 @parameterized_class([
-    {'org_payload': org_payload, 'repos_payload': repos_payload, 'expected_repos': expected_repos, 'apache2_repos': apache2_repos},
+    {'org_payload': org_payload, 'repos_payload': repos_payload, 
+     'expected_repos': expected_repos, 'apache2_repos': apache2_repos},
 ])
 class TestIntegrationGithubOrgClient(unittest.TestCase):
     """Integration tests for GithubOrgClient class."""
@@ -129,7 +130,7 @@ class TestIntegrationGithubOrgClient(unittest.TestCase):
         """Set up class for integration tests."""
         cls.get_patcher = patch('requests.get')
         cls.mock_get = cls.get_patcher.start()
-        
+
         # Define the side_effect for different URLs
         def mock_requests_get(url, *args, **kwargs):
             if url.endswith('/orgs/google'):
