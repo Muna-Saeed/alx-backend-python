@@ -16,7 +16,14 @@ class TestGithubOrgClient(unittest.TestCase):
     ])
     @patch('client.get_json', return_value={"login": "mocked_org"})
     def test_org(self, org_name, expected, mock_get_json):
-        """Test that GithubOrgClient.org returns the correct value"""
+        """
+        Test that GithubOrgClient.org returns the correct value.
+
+        Args:
+            org_name (str): The name of the organization.
+            expected (dict): The expected response from the API.
+            mock_get_json (MagicMock): Mocked get_json method.
+        """
         client = GithubOrgClient(org_name)
         with patch(
             'client.GithubOrgClient.get_json', return_value=expected
@@ -32,6 +39,9 @@ class TestGithubOrgClient(unittest.TestCase):
         """
         Test that GithubOrgClient._public_repos_url
         returns the expected value
+
+        Args:
+            mock_org (MagicMock): Mocked org property.
         """
         mock_org.return_value = {
             "repos_url": "https://api.github.com/orgs/google/repos"
@@ -49,6 +59,10 @@ class TestGithubOrgClient(unittest.TestCase):
         """
         Test that GithubOrgClient.public_repos
         returns the expected list of repos
+
+        Args:
+            mock_public_repos_url (MagicMock): Mocked _public_repos_url property.
+            mock_get_json (MagicMock): Mocked get_json method.
         """
         mock_public_repos_url.return_value = {
                 "https://api.github.com/orgs/google/repos"
