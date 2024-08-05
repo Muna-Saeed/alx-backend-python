@@ -14,7 +14,7 @@ class TestGithubOrgClient(unittest.TestCase):
         ("google", {"login": "google"}),
         ("abc", {"login": "abc"})
     ])
-    
+
     @patch('client.get_json', return_value={"login": "mocked_org"})
     def test_org(self, org_name, expected, mock_get_json):
         """Test that GithubOrgClient.org returns the correct value"""
@@ -27,14 +27,21 @@ class TestGithubOrgClient(unittest.TestCase):
             mock_get_json.assert_called_once_with(
                 f'https://api.github.com/orgs/{org_name}'
             )
- 
+
     @patch('client.GithubOrgClient.org', new_callable=PropertyMock)
     def test_public_repos_url(self, mock_org):
-        """Test that GithubOrgClient._public_repos_url returns the expected value"""
-        mock_org.return_value = {"repos_url": "https://api.github.com/orgs/google/repos"}
+        """
+        Test that GithubOrgClient._public_repos_url
+        returns the expected value
+        """
+        mock_org.return_value = {
+            "repos_url": "https://api.github.com/orgs/google/repos"
+        }
         client = GithubOrgClient("google")
         result = client._public_repos_url
-        self.assertEqual(result, "https://api.github.com/orgs/google/repos")
+        self.assertEqual(result,
+                         "https://api.github.com/orgs/google/repos"
+                        )
 
     @patch('client.get_json')
     @patch('client.GithubOrgClient._public_repos_url', new_callable=PropertyMock)
@@ -52,7 +59,9 @@ class TestGithubOrgClient(unittest.TestCase):
         
         self.assertEqual(result, ["repo1", "repo2", "repo3"])
         mock_public_repos_url.assert_called_once()
-        mock_get_json.assert_called_once_with("https://api.github.com/orgs/google/repos")
+        mock_get_json.assert_called_once_with(
+            "https://api.github.com/orgs/google/repos"
+        )
 
 
 if __name__ == "__main__":
