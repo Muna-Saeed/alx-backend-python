@@ -1,10 +1,15 @@
 # 0x03. Unittests and Integration Tests
 
-Overview: Unit and Integration Testing in Python
+## Overview
+This project focuses on unit testing and integration testing in Python. Unit testing is used to ensure individual functions work as expected, while integration testing verifies that different parts of the application work together correctly.
 
 ## Introduction
 
 In this project, you will learn about and implement both unit tests and integration tests in Python. You will use the `unittest` framework and the `unittest.mock` library to create comprehensive tests for your code, ensuring that each component works correctly in isolation and that the system works correctly as a whole.
+
+### Objectives
+- Understand the difference between unit and integration tests.
+- Learn common testing patterns such as mocking, parametrizations, and fixtures.
 
 ## Key Concepts
 
@@ -50,7 +55,7 @@ By the end of this project, you should be able to:
 ## Requirements
 
 1. **Environment**:
-   - Your files will be interpreted/compiled on Ubuntu 18.04 LTS using Python 3.7.
+   - All files will be interpreted/compiled on Ubuntu 18.04 LTS using Python 3.7.
    
 2. **Code Style**:
    - All files should end with a new line.
@@ -60,6 +65,7 @@ By the end of this project, you should be able to:
 
 3. **Documentation**:
    - Each module, class, and function should have a proper docstring explaining its purpose.
+   - Functions (inside and outside a class) should have documentation.
    - Documentation should be meaningful and not just a single word.
    - Use the following command to verify documentation:
      ```bash
@@ -71,46 +77,6 @@ By the end of this project, you should be able to:
 
 4. **Type Annotations**:
    - All functions and coroutines must be type-annotated.
-
-## Conclusion
-
-This project will help you develop a strong foundation in writing tests for Python code, using the `unittest` framework, and understanding the importance of unit and integration testing. By the end of this project, you will be able to confidently write tests that ensure the reliability and correctness of your code.
-
----
-
-Remember, good tests are critical to maintainable and reliable software. Happy testing!
-
-Here's the `README.md` for the `0x03. Unittests and Integration Tests` project:
-
-```markdown
-# 0x03. Unittests and Integration Tests
-
-## Overview
-This project focuses on unit testing and integration testing in Python. Unit testing is used to ensure individual functions work as expected, while integration testing verifies that different parts of the application work together correctly.
-
-### Objectives
-- Understand the difference between unit and integration tests.
-- Learn common testing patterns such as mocking, parametrizations, and fixtures.
-
-### Requirements
-- All files will be interpreted/compiled on Ubuntu 18.04 LTS using Python 3.7.
-- All files should end with a new line.
-- The first line of all files should be exactly `#!/usr/bin/env python3`.
-- A `README.md` file at the root of the folder is mandatory.
-- Code should use the `pycodestyle` style (version 2.5).
-- All files must be executable.
-- Modules should have documentation.
-- Classes should have documentation.
-- Functions (inside and outside a class) should have documentation.
-- All functions and coroutines must be type-annotated.
-
-### Resources
-Read or watch:
-- [unittest — Unit testing framework](https://docs.python.org/3/library/unittest.html)
-- [unittest.mock — mock object library](https://docs.python.org/3/library/unittest.mock.html)
-- [How to mock a readonly property with mock?](https://stackoverflow.com/questions/17351166/how-to-mock-a-readonly-property-with-mock)
-- [parameterized](https://pypi.org/project/parameterized/)
-- [Memoization](https://en.wikipedia.org/wiki/Memoization)
 
 ### How to Execute Tests
 Execute your tests with:
@@ -178,5 +144,8 @@ $ python -m unittest path/to/test_file.py
 ## Conclusion
 This project provides a comprehensive understanding of unit testing and integration testing, including how to mock external dependencies, parameterize tests, and use fixtures for more complex test scenarios.
 
-```
+This project will help you develop a strong foundation in writing tests for Python code, using the `unittest` framework, and understanding the importance of unit and integration testing. By the end of this project, you will be able to confidently write tests that ensure the reliability and correctness of your code.
 
+---
+
+Remember, good tests are critical to maintainable and reliable software. Happy testing!
