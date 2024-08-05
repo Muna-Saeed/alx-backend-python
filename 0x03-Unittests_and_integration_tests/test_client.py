@@ -40,7 +40,7 @@ class TestGithubOrgClient(unittest.TestCase):
         result = client._public_repos_url
         self.assertEqual(result,
                          "https://api.github.com/orgs/google/repos"
-                          )
+        )
 
     @patch('client.get_json')
     @patch('client.GithubOrgClient._public_repos_url',
