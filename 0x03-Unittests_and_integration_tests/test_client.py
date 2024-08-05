@@ -50,8 +50,9 @@ class TestGithubOrgClient(unittest.TestCase):
         Test that GithubOrgClient.public_repos
         returns the expected list of repos
         """
-        mock_public_repos_url.return_value =
-        "https://api.github.com/orgs/google/repos"
+        mock_public_repos_url.return_value = {
+                "https://api.github.com/orgs/google/repos"
+                }
         mock_get_json.return_value = [
             {"name": "repo1"},
             {"name": "repo2"},
