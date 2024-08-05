@@ -44,19 +44,19 @@ class TestGetJson(unittest.TestCase):
     Test cases for get_json function
     """
     @parameterized.expand([
-        ("http://example.com", {"key": "value"}),
-        ("http://anotherexample.com", {"another_key": "another_value"}),
+        ("http://example.com", {"payload": True}),
+        ("http://holberton.io", {"payload": False}),
     ])
     @patch('utils.requests.get')
-    def test_get_json(self, url, expected, mock_get):
+    def test_get_json(self, url, payload, mock_get):
         """
         Test get_json returns expected result
         """
         mock_response = Mock()
-        mock_response.json.return_value = expected
+        mock_response.json.return_value = payload
         mock_get.return_value = mock_response
 
-        self.assertEqual(get_json(url), expected)
+        self.assertEqual(get_json(url), payload)
         mock_get.assert_called_once_with(url)
 
 
