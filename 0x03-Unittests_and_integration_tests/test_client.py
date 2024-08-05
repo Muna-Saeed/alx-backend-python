@@ -97,6 +97,24 @@ class TestGithubOrgClient(unittest.TestCase):
             "https://api.github.com/orgs/google/repos"
         )
 
+    def test_has_license(self, repo, license_key, expected):
+        """
+        Test that GithubOrgClient.has_license returns the expected
+        result based on the repository's license.
+
+        Args:
+            repo (dict): The repository object with license information.
+            license_key (str): The license key to check.
+            expected (bool): The expected result.
+        """
+        client = GithubOrgClient("google")
+
+        # Mock the repo method to return the provided repo dictionary
+        with patch.object(client, 'repo', return_value=repo):
+            result = client.has_license(license_key)
+
+        self.assertEqual(result, expected)
+
 
 if __name__ == "__main__":
     unittest.main()
