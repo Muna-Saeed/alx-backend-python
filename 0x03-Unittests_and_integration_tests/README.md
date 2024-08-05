@@ -80,3 +80,103 @@ This project will help you develop a strong foundation in writing tests for Pyth
 
 Remember, good tests are critical to maintainable and reliable software. Happy testing!
 
+Here's the `README.md` for the `0x03. Unittests and Integration Tests` project:
+
+```markdown
+# 0x03. Unittests and Integration Tests
+
+## Overview
+This project focuses on unit testing and integration testing in Python. Unit testing is used to ensure individual functions work as expected, while integration testing verifies that different parts of the application work together correctly.
+
+### Objectives
+- Understand the difference between unit and integration tests.
+- Learn common testing patterns such as mocking, parametrizations, and fixtures.
+
+### Requirements
+- All files will be interpreted/compiled on Ubuntu 18.04 LTS using Python 3.7.
+- All files should end with a new line.
+- The first line of all files should be exactly `#!/usr/bin/env python3`.
+- A `README.md` file at the root of the folder is mandatory.
+- Code should use the `pycodestyle` style (version 2.5).
+- All files must be executable.
+- Modules should have documentation.
+- Classes should have documentation.
+- Functions (inside and outside a class) should have documentation.
+- All functions and coroutines must be type-annotated.
+
+### Resources
+Read or watch:
+- [unittest — Unit testing framework](https://docs.python.org/3/library/unittest.html)
+- [unittest.mock — mock object library](https://docs.python.org/3/library/unittest.mock.html)
+- [How to mock a readonly property with mock?](https://stackoverflow.com/questions/17351166/how-to-mock-a-readonly-property-with-mock)
+- [parameterized](https://pypi.org/project/parameterized/)
+- [Memoization](https://en.wikipedia.org/wiki/Memoization)
+
+### How to Execute Tests
+Execute your tests with:
+```sh
+$ python -m unittest path/to/test_file.py
+```
+
+## Tasks
+
+### 0. Parameterize a unit test
+- **File:** `test_utils.py`
+- **Description:** Implement `TestAccessNestedMap.test_access_nested_map` method to test the `utils.access_nested_map` function.
+- **Input/Output:** Test different nested maps and paths using `@parameterized.expand`.
+
+### 1. Parameterize a unit test
+- **File:** `test_utils.py`
+- **Description:** Implement `TestAccessNestedMap.test_access_nested_map_exception` to test that a `KeyError` is raised for invalid paths.
+- **Input/Output:** Use `assertRaises` and `@parameterized.expand`.
+
+### 2. Mock HTTP calls
+- **File:** `test_utils.py`
+- **Description:** Implement `TestGetJson` class and `test_get_json` method to test `utils.get_json` without making external HTTP calls.
+- **Input/Output:** Use `unittest.mock.patch` to mock `requests.get`.
+
+### 3. Parameterize and patch
+- **File:** `test_utils.py`
+- **Description:** Implement `TestMemoize` class and `test_memoize` method to test `utils.memoize` decorator.
+- **Input/Output:** Use `unittest.mock.patch` to mock a method.
+
+### 4. Parameterize and patch as decorators
+- **File:** `test_client.py`
+- **Description:** Implement `TestGithubOrgClient` class and `test_org` method to test `GithubOrgClient.org`.
+- **Input/Output:** Use `@patch` and `@parameterized.expand`.
+
+### 5. Mocking a property
+- **File:** `test_client.py`
+- **Description:** Implement `test_public_repos_url` to unit-test `GithubOrgClient._public_repos_url`.
+- **Input/Output:** Use `patch` as a context manager.
+
+### 6. More patching
+- **File:** `test_client.py`
+- **Description:** Implement `test_public_repos` to unit-test `GithubOrgClient.public_repos`.
+- **Input/Output:** Use `@patch` and `patch`.
+
+### 7. Parameterize
+- **File:** `test_client.py`
+- **Description:** Implement `test_has_license` to unit-test `GithubOrgClient.has_license`.
+- **Input/Output:** Parameterize the test with different inputs and expected results.
+
+### 8. Integration test: fixtures
+- **File:** `test_client.py`
+- **Description:** Implement `TestIntegrationGithubOrgClient` class with `setUpClass` and `tearDownClass` methods for integration tests.
+- **Input/Output:** Use `@parameterized_class` and `patch`.
+
+### 9. Integration tests
+- **File:** `test_client.py`
+- **Description:** Implement `test_public_repos` and `test_public_repos_with_license` to test `GithubOrgClient.public_repos`.
+- **Input/Output:** Ensure the methods return expected results based on fixtures.
+
+## Required Files
+- `utils.py`
+- `client.py`
+- `fixtures.py`
+
+## Conclusion
+This project provides a comprehensive understanding of unit testing and integration testing, including how to mock external dependencies, parameterize tests, and use fixtures for more complex test scenarios.
+
+```
+
