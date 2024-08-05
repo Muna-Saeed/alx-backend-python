@@ -1,6 +1,5 @@
 Here's a `README.md` for the `alx-backend-python` repository, encompassing the three folders and files:
 
-```markdown
 # alx-backend-python
 
 This repository contains various projects related to backend development using Python. The projects cover different aspects of Python programming, including asynchronous programming, unit testing, and integration testing.
