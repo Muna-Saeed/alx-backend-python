@@ -3,13 +3,16 @@
 """
 test_client.py
 
-This module contains unit tests for the GithubOrgClient class from the client module.
+This module contains unit tests for the
+GithubOrgClient class from the client module.
 It includes tests for:
 - The `org` property to ensure it returns the correct organization data.
 - The `_public_repos_url` property to ensure it returns the correct URL.
-- The `public_repos` method to ensure it returns the correct list of repositories.
+- The `public_repos` method to ensure it 
+  returns the correct list of repositories.
 
-The tests use the unittest framework along with patching and parameterized decorators to mock external calls and validate functionality.
+The tests use the unittest framework along with patching and parameterized
+decorators to mock external calls and validate functionality.
 """
 
 import unittest
