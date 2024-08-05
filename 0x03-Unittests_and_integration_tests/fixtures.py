@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+"""
+Fixtures for GithubOrgClient tests
+"""
 
 TEST_PAYLOAD = [
   (
